@@ -94,7 +94,7 @@ public class Accessors {
             Class<?> a = (s == Object.class && cls.getInterfaces().length > 0) ? cls.getInterfaces()[0] : s;
             return "(anonymous) %s of %s in %s".formatted(cls.getName(), betterClassName(a), c.isAnonymousClass() ? "(" + n + ")" : n);
         }
-        if (cls.isUnnamedClass()) return "(unnamed)";
+//        if (cls.getName()) return "(unnamed)";
         if (cls.isHidden()) return "(hidden) " + cls.getName();
         return cls.getName();
     }
