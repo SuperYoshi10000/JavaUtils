@@ -51,8 +51,16 @@ public interface Result<T> {
     static <T> Result<T> of(T value) {
         return () -> value;
     }
+    static <T> Result<T> ofNonnull(T value) {
+        return value != null ? of(value) : Result.fail();
+    }
     
     static <T> Result<T> ofOptional(Optional<T> value) {
+        if (value == null) return Result.fail();
+        return value.map(Result::of).orElse(Result.of(null));
+    }
+    static <T> Result<T> ofNonnullOptional(Optional<T> value) {
+        if (value == null) return Result.fail();
         return value.map(Result::of).orElse(Result.fail());
     }
     default Optional<T> asOptional() {
