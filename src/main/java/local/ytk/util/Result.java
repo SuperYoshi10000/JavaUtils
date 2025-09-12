@@ -1,6 +1,6 @@
 package local.ytk.util;
 
-import local.ytk.util.function.ThrowableFunctions;
+import local.ytk.util.function.ThrowingFunctions;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -67,13 +67,13 @@ public interface Result<T> {
         return Optional.ofNullable(value());
     }
     
-    static <T> Result<T> of(ThrowableFunctions.ThrowableSupplier<T, ?> supplier) {
+    static <T> Result<T> of(ThrowingFunctions.ThrowingSupplier<T, ?> supplier) {
         return supplier.tryGet();
     }
-    static <A, T> Result<T> of(ThrowableFunctions.ThrowableFunction<A, T, ?> function, A arg) {
+    static <A, T> Result<T> of(ThrowingFunctions.ThrowingFunction<A, T, ?> function, A arg) {
         return function.tryApply(arg);
     }
-    static <A, B, T> Result<T> of(ThrowableFunctions.ThrowableBiFunction<A, B, T, ?> function, A arg1, B arg2) {
+    static <A, B, T> Result<T> of(ThrowingFunctions.ThrowingBiFunction<A, B, T, ?> function, A arg1, B arg2) {
         return function.tryApply(arg1, arg2);
     }
     @SuppressWarnings("unchecked")
