@@ -192,7 +192,7 @@ public class ThrowingFunctions {
     
     public interface Throwing<F, T extends Throwable> {
         F nonThrowing();
-        F nonThrowingOrElse(Consumer<? super T> consumer)
+        F nonThrowingOrElse(Consumer<? super T> consumer);
     }
     public interface ThrowingWithOutput<F, R, T extends Throwable> extends Throwing<F> {
         R nonThrowingOrElse(R result);

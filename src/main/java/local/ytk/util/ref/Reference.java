@@ -55,9 +55,9 @@ public interface Box<T> {
     }
     class Atomic<T> extends AtomicReference<T> implements Box<T> {
         Atomic(T value) {
-            super(value)
+            super(value);
         }
-    `   public T modify(UnaryOperator<T> op) {
+        public T modify(UnaryOperator<T> op) {
             return updateAndGet(op);
         }
         public <R> Box<R> map(Function<T, R> mapper) {
