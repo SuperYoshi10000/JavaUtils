@@ -2,8 +2,8 @@ package local.ytk.util;
 
 import java.util.Objects;
 
-public abstract sealed class Symbol {
-    public Symbol() {}
+public sealed class Symbol {
+    protected Symbol() {}
     
     public Symbol dummy() {
         return new Symbol();
@@ -121,7 +121,7 @@ public abstract sealed class Symbol {
             return "Symbol(%s)".formatted(value);
         }
 
-        public String value() {
+        public T value() {
             return value;
         }
     }

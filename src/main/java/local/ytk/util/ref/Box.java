@@ -1,7 +1,9 @@
 package local.ytk.util.ref;
 
-import java.util.function.UnaryOperator;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.BinaryOperator;
+import java.util.function.UnaryOperator;
+import java.util.Optional;
 
 public interface Box<T> {
     void set(T value);
@@ -38,7 +40,7 @@ public interface Box<T> {
             this.value = value;
         }
         public void set(T value) {
-            return this.value = value;
+            this.value = value;
         }
         public T get() {
             return this.value;

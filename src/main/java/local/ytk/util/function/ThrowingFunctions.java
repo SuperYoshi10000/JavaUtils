@@ -10,7 +10,7 @@ public class ThrowingFunctions {
     private ThrowingFunctions() {
     }
     
-    public static <T extends Throwable> boolean tryRun(ThrowingRunnable<T> ThrowingRunnable) {
+    public static <T extends Throwable> boolean tryRun(ThrowingRunnable<T> throwingRunnable) {
         try {
             throwingRunnable.run();
             return true;
@@ -19,7 +19,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <T extends Throwable> Runnable nonThrowingOrElse(ThrowingRunnable<T> ThrowingRunnable, Consumer<? super Throwable> consumer) {
+    public static <T extends Throwable> Runnable nonThrowingOrElse(ThrowingRunnable<T> throwingRunnable, Consumer<? super Throwable> consumer) {
         return () -> {
             try {
                 throwingRunnable.run();
@@ -29,7 +29,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <T extends Throwable> Runnable nonThrowing(ThrowingRunnable<T> ThrowingRunnable) {
+    public static <T extends Throwable> Runnable nonThrowing(ThrowingRunnable<T> throwingRunnable) {
         return () -> {
             try {
                 throwingRunnable.run();
@@ -38,7 +38,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, T extends Throwable> boolean tryAccept(ThrowingConsumer<A, T> ThrowingConsumer, A arg) {
+    public static <A, T extends Throwable> boolean tryAccept(ThrowingConsumer<A, T> throwingConsumer, A arg) {
         try {
             throwingConsumer.accept(arg);
             return true;
@@ -47,7 +47,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <A, T extends Throwable> Consumer<A> nonThrowingOrElse(ThrowingConsumer<A, T> ThrowingConsumer, Consumer<? super Throwable> consumer) {
+    public static <A, T extends Throwable> Consumer<A> nonThrowingOrElse(ThrowingConsumer<A, T> throwingConsumer, Consumer<? super Throwable> consumer) {
         return a -> {
             try {
                 throwingConsumer.accept(a);
@@ -57,7 +57,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, T extends Throwable> Consumer<A> nonThrowing(ThrowingConsumer<A, T> ThrowingConsumer) {
+    public static <A, T extends Throwable> Consumer<A> nonThrowing(ThrowingConsumer<A, T> throwingConsumer) {
         return a -> {
             try {
                 throwingConsumer.accept(a);
@@ -66,7 +66,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, B, T extends Throwable> boolean tryAccept(ThrowingBiConsumer<A, B, T> ThrowingBiConsumer, A arg1, B arg2) {
+    public static <A, B, T extends Throwable> boolean tryAccept(ThrowingBiConsumer<A, B, T> throwingBiConsumer, A arg1, B arg2) {
         try {
             throwingBiConsumer.accept(arg1, arg2);
             return true;
@@ -75,7 +75,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <A, B, T extends Throwable> BiConsumer<A, B> nonThrowingOrElse(ThrowingBiConsumer<A, B, T> ThrowingBiConsumer, Consumer<? super Throwable> consumer) {
+    public static <A, B, T extends Throwable> BiConsumer<A, B> nonThrowingOrElse(ThrowingBiConsumer<A, B, T> throwingBiConsumer, Consumer<? super Throwable> consumer) {
         return (a, b) -> {
             try {
                 throwingBiConsumer.accept(a, b);
@@ -85,7 +85,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, B, T extends Throwable> BiConsumer<A, B> nonThrowing(ThrowingBiConsumer<A, B, T> ThrowingBiConsumer) {
+    public static <A, B, T extends Throwable> BiConsumer<A, B> nonThrowing(ThrowingBiConsumer<A, B, T> throwingBiConsumer) {
         return (a, b) -> {
             try {
                 throwingBiConsumer.accept(a, b);
@@ -94,7 +94,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <R, T extends Throwable> Result<R> tryGet(ThrowingSupplier<R, T> ThrowingSupplier) {
+    public static <R, T extends Throwable> Result<R> tryGet(ThrowingSupplier<R, T> throwingSupplier) {
         try {
             return Result.of(throwingSupplier.get());
         } catch (Throwable ignore) {
@@ -102,7 +102,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <R, T extends Throwable> Supplier<R> nonThrowingOrElse(ThrowingSupplier<R, T> ThrowingSupplier, Function<? super Throwable, R> function) {
+    public static <R, T extends Throwable> Supplier<R> nonThrowingOrElse(ThrowingSupplier<R, T> throwingSupplier, Function<? super Throwable, R> function) {
         return () -> {
             try {
                 return throwingSupplier.get();
@@ -112,11 +112,11 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> ThrowingSupplier) {
+    public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> throwingSupplier) {
         return throwingSupplier.nonThrowing((R) null);
     }
     
-    public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> ThrowingSupplier, R defaultValue) {
+    public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> throwingSupplier, R defaultValue) {
         return () -> {
             try {
                 return throwingSupplier.get();
@@ -126,7 +126,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, R, T extends Throwable> Result<R> tryApply(ThrowingFunction<A, R, T> ThrowingFunction, A arg) {
+    public static <A, R, T extends Throwable> Result<R> tryApply(ThrowingFunction<A, R, T> throwingFunction, A arg) {
         try {
             return Result.of(throwingFunction.apply(arg));
         } catch (Throwable ignore) {
@@ -134,7 +134,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <A, R, T extends Throwable> Function<A, R> nonThrowingOrElse(ThrowingFunction<A, R, T> ThrowingFunction, Function<? super Throwable, R> function) {
+    public static <A, R, T extends Throwable> Function<A, R> nonThrowingOrElse(ThrowingFunction<A, R, T> throwingFunction, Function<? super Throwable, R> function) {
         return a -> {
             try {
                 return throwingFunction.apply(a);
@@ -144,11 +144,11 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> ThrowingFunction) {
+    public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> throwingFunction) {
         return throwingFunction.nonThrowing((R) null);
     }
     
-    public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> ThrowingFunction, R defaultValue) {
+    public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> throwingFunction, R defaultValue) {
         return a -> {
             try {
                 return throwingFunction.apply(a);
@@ -158,7 +158,7 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, B, R, T extends Throwable> Result<R> tryApply(ThrowingBiFunction<A, B, R, T> ThrowingBiFunction, A arg1, B arg2) {
+    public static <A, B, R, T extends Throwable> Result<R> tryApply(ThrowingBiFunction<A, B, R, T> throwingBiFunction, A arg1, B arg2) {
         try {
             return Result.of(throwingBiFunction.apply(arg1, arg2));
         } catch (Throwable ignore) {
@@ -166,7 +166,7 @@ public class ThrowingFunctions {
         }
     }
     
-    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowingOrElse(ThrowingBiFunction<A, B, R, T> ThrowingBiFunction, Function<? super Throwable, R> function) {
+    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowingOrElse(ThrowingBiFunction<A, B, R, T> throwingBiFunction, Function<? super Throwable, R> function) {
         return (a, b) -> {
             try {
                 return throwingBiFunction.apply(a, b);
@@ -176,11 +176,11 @@ public class ThrowingFunctions {
         };
     }
     
-    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> ThrowingBiFunction) {
+    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> throwingBiFunction) {
         return throwingBiFunction.nonThrowing((R) null);
     }
     
-    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> ThrowingBiFunction, R defaultValue) {
+    public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> throwingBiFunction, R defaultValue) {
         return (a, b) -> {
             try {
                 return throwingBiFunction.apply(a, b);
@@ -194,7 +194,7 @@ public class ThrowingFunctions {
         F nonThrowing();
         F nonThrowingOrElse(Consumer<? super T> consumer);
     }
-    public interface ThrowingWithOutput<F, R, T extends Throwable> extends Throwing<F> {
+    public interface ThrowingWithOutput<F, R, T extends Throwable> extends Throwing<F, T> {
         R nonThrowingOrElse(R result);
         F nonThrowingOrElse(Function<? super T, R> function);
     }
