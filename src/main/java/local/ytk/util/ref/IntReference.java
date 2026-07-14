@@ -3,9 +3,8 @@ package local.ytk.util.ref;
 import java.nio.IntBuffer;
 
 public class IntReference {
-    protected int[] intArray = new int[]{0};
-    protected IntBuffer intBuffer = IntBuffer.wrap(intArray);
-    protected int value;
+    protected final int[] intArray = new int[]{0};
+    protected final IntBuffer intBuffer = IntBuffer.wrap(intArray);
     
     public IntReference() {}
     public IntReference(int value) {
@@ -18,14 +17,13 @@ public class IntReference {
     
     public int[] intArray() {
         return intArray;
+        
     }
 
     public int set(int value) {
-        int old = this.value;
-        this.value = intArray[0] = value;
-        return old;
+        return intArray[0] = value;
     }
     public int get() {
-        return value = intArray[0];
+        return intArray[0];
     }
 }
