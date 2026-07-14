@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
     implementation "it.unimi.dsi:fastutil:8.5.13"
-    implementation "org.apache.commons:commons-lang3:3.15.0"
+    implementation 'org.apache.commons:commons-lang3:3.18.0'
     implementation "org.apache.commons:commons-collections4:4.4"
     implementation "com.google.guava:guava:32.1.2-jre"
     implementation "com.google.code.gson:gson:2.10.1"
@@ -27,16 +27,16 @@ test {
     useJUnitPlatform()
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
-    }
-}
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-}
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(24)
+//    }
+//}
+//
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            from components.java
+//        }
+//    }
+//}
