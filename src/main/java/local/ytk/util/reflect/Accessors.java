@@ -3,7 +3,7 @@ package local.ytk.util.reflect;
 import local.ytk.util.ObjectBuilder;
 import local.ytk.util.function.FunctionUtils;
 import local.ytk.util.function.ItemSelector;
-import local.ytk.util.function.ThrowableFunctions;
+import local.ytk.util.function.ThrowingFunctions;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -18,22 +18,22 @@ public class Accessors {
     private Accessors() {}
     
     public static <O, F> Function<O, F> get(Field f) {
-        Class<O> cls = (Class<O>) f.getDeclaringClass();
-        return FunctionUtils.cast(ThrowableFunctions.nonThrowable(f::get));
+//        Class<O> cls = (Class<O>) f.getDeclaringClass();
+        return FunctionUtils.cast(ThrowingFunctions.nonThrowing(f::get));
     }
     public static <O, F> BiFunction<O, F, F> set(Field f) {
-        Class<O> cls = (Class<O>) f.getDeclaringClass();
-        return FunctionUtils.returnArg2(ThrowableFunctions.nonThrowable(f::set));
+//        Class<O> cls = (Class<O>) f.getDeclaringClass();
+        return FunctionUtils.returnArg2(ThrowingFunctions.nonThrowing(f::set));
     }
     
     public static <O, F> Function<O, F> get(Class<O> cls, Field f) {
-        return FunctionUtils.cast(ThrowableFunctions.nonThrowable(f::get));
+        return FunctionUtils.cast(ThrowingFunctions.nonThrowing(f::get));
     }
     public static <O, F> BiFunction<O, F, F> set(Class<O> cls, Field f) {
-        return FunctionUtils.returnArg2(ThrowableFunctions.nonThrowable(f::set));
+        return FunctionUtils.returnArg2(ThrowingFunctions.nonThrowing(f::set));
     }
     
-    public static <T> ThrowableFunctions.ThrowableSupplier<T, ?> constructor(Class<T> cls) {
+    public static <T> ThrowingFunctions.ThrowingSupplier<T, ?> constructor(Class<T> cls) {
         try {
             return cls.getConstructor()::newInstance;
         } catch (NoSuchMethodException e) {

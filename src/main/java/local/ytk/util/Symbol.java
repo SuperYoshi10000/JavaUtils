@@ -17,8 +17,8 @@ public sealed class Symbol {
     public Symbol named(String name) {
         return new NamedSymbol(name);
     }
-    public Symbol value(T value) {
-        return new ValueSymbol(value);
+    public <T> Symbol value(T value) {
+        return new ValueSymbol<>(value);
     }
     
     @Override

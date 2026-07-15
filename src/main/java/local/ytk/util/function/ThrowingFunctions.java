@@ -113,7 +113,7 @@ public class ThrowingFunctions {
     }
     
     public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> throwingSupplier) {
-        return throwingSupplier.nonThrowing((R) null);
+        return throwingSupplier.nonThrowing(null);
     }
     
     public static <R, T extends Throwable> Supplier<R> nonThrowing(ThrowingSupplier<R, T> throwingSupplier, R defaultValue) {
@@ -145,7 +145,7 @@ public class ThrowingFunctions {
     }
     
     public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> throwingFunction) {
-        return throwingFunction.nonThrowing((R) null);
+        return throwingFunction.nonThrowing(null);
     }
     
     public static <A, R, T extends Throwable> Function<A, R> nonThrowing(ThrowingFunction<A, R, T> throwingFunction, R defaultValue) {
@@ -177,7 +177,7 @@ public class ThrowingFunctions {
     }
     
     public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> throwingBiFunction) {
-        return throwingBiFunction.nonThrowing((R) null);
+        return throwingBiFunction.nonThrowing(null);
     }
     
     public static <A, B, R, T extends Throwable> BiFunction<A, B, R> nonThrowing(ThrowingBiFunction<A, B, R, T> throwingBiFunction, R defaultValue) {
