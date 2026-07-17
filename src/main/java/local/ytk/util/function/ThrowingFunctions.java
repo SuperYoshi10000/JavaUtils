@@ -97,8 +97,8 @@ public class ThrowingFunctions {
     public static <R, T extends Throwable> Result<R> tryGet(ThrowingSupplier<R, T> throwingSupplier) {
         try {
             return Result.of(throwingSupplier.get());
-        } catch (Throwable ignore) {
-            return Result.fail();
+        } catch (Throwable e) {
+            return Result.failure(e);
         }
     }
     
@@ -129,8 +129,8 @@ public class ThrowingFunctions {
     public static <A, R, T extends Throwable> Result<R> tryApply(ThrowingFunction<A, R, T> throwingFunction, A arg) {
         try {
             return Result.of(throwingFunction.apply(arg));
-        } catch (Throwable ignore) {
-            return Result.fail();
+        } catch (Throwable e) {
+            return Result.failure(e);
         }
     }
     
@@ -161,8 +161,8 @@ public class ThrowingFunctions {
     public static <A, B, R, T extends Throwable> Result<R> tryApply(ThrowingBiFunction<A, B, R, T> throwingBiFunction, A arg1, B arg2) {
         try {
             return Result.of(throwingBiFunction.apply(arg1, arg2));
-        } catch (Throwable ignore) {
-            return Result.fail();
+        } catch (Throwable e) {
+            return Result.failure(e);
         }
     }
     
